@@ -32,7 +32,7 @@ from email.mime.text import MIMEText
 from smtplib import SMTP_SSL
 
 __all__ = ['Mailer']
-VERSION = '0.0.1'
+VERSION = '0.0.2'
 
 
 class Mailer:
