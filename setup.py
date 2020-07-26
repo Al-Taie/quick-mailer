@@ -13,13 +13,13 @@ with open("README.md", "r") as f:
 
 setup(
     name="quick-mailer",
-    version="0.0.1",
+    version="0.0.2",
     author="Ahmed Al-Taie",
     author_email="agprosup@gmail.com",
-    description="A small package",
+    description='This Module help you to send fast Email.🌸',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    keywords=("smtp", "mail", "gmail"),
+    keywords=["smtp", "mail", "gmail"],
     url="https://github.com/Al-Taie/quick-mailer",
     packages=find_packages(),
     classifiers=[
