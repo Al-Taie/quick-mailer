@@ -1,14 +1,14 @@
-![image](bsmala.png)
+![image](images/bsmala.png)
 
 # Installation:
-``
+```cmd
 pip install altaie-mailer
-``
+```
 
-[pypi Link](https://guides.github.com/features/mastering-markdown/)
+[pypi Link]()
 
 # Usage:
-````
+```py
 from altai-mailer import Mailer
 
 mail = Mailer(email='someone@gamil.com'
@@ -17,4 +17,4 @@ mail = Mailer(email='someone@gamil.com'
 mail.send(receiver='someone2@gmail.com',
           subject='First Message',
           message='Hello This Message From Python')
-````
+```
