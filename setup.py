@@ -12,15 +12,15 @@ with open("README.md", "r") as f:
     long_description = f.read()
 
 setup(
-    name="altai-mailer",
+    name="py-mailer",
     version="0.0.1",
     author="Ahmed Al-Taie",
-    author_email="author@example.com",
+    author_email="agprosup@gmail.com",
     description="A small package",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    keywords=("smtp", "mail", "gmail", "yahoo"),
-    url="https://github.com/pypa/sampleproject",
+    keywords=("smtp", "mail", "gmail"),
+    url="https://github.com/Al-Taie/py-mailer",
     packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
