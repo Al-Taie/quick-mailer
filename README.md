@@ -9,10 +9,10 @@ The Module support **Gmail** right now, but in the nearly future will support ot
 
 # Installation:
 ```cmd
-pip install altaie-mailer
+pip install quick-mailer
 ```
 
-[pypi Link]()
+**[-->> pypi Link](https://pypi.org/project/quick-mailer)**
 
 # Usage:
 ```py
