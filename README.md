@@ -18,7 +18,7 @@ pip install quick-mailer
 ```py
 from mailer import Mailer
 
-mail = Mailer(email='someone@gamil.com'
+mail = Mailer(email='someone@gmail.com'
               password='your_password')
 
 mail.send(receiver='someone2@gmail.com',
