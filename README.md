@@ -15,6 +15,7 @@ pip install quick-mailer
 **[-->> pypi Link](https://pypi.org/project/quick-mailer)**
 
 # Usage:
+**Send Message**
 ```py
 from mailer import Mailer
 
@@ -24,6 +25,18 @@ mail = Mailer(email='someone@gmail.com',
 mail.send(receiver='someone2@gmail.com',
           subject='First Message',
           message='Hello This Message From Python')
+```
+
+**Check Send Status**
+```py
+# Uaing (status) Variable
+print(mail.status)
+
+# Example:
+if mail.status:
+  pass
+else:
+  pass
 ```
 
 **Parameters**
@@ -44,6 +57,12 @@ mail.send(receiver='someone@gmail.com',
           image='img.jpg',
           audio='sound.mp3',
           file='file.zip')
+```
+
+**About**
+```py
+# You Can Use (mail.about) Function for more info.
+mail.about()
 ```
 
 **Follow Me on Instagram: [@9_Tay](https://www.instagram.com/9_tay). :cherry_blossom:**
