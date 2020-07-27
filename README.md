@@ -36,6 +36,16 @@ audio: Audio File Name  [Optional]
 file: File Name         [Optional]
 ```
 
+**Send Multi Files**
+```py
+mail.send(receiver='someone@gmail.com',
+          subject='Test Module',
+          message='Hello This Message From Python!',
+          image='img.jpg',
+          audio='sound.mp3',
+          file='file.zip')
+```
+
 **Follow Me on Instagram: [@9_Tay](https://www.instagram.com/9_tay). :cherry_blossom:**
 
 # Thank You :)
