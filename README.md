@@ -1,7 +1,7 @@
 ![image](images/bsmala.png)
 
 # Description
-This Module help you to send **fast Email. :cherry_blossom:**
+This Module help you to send **fast Email. 🌸**
 
 And you can attach **image, audio, and other files easily.**
 
@@ -65,6 +65,6 @@ mail.send(receiver='someone@gmail.com',
 mail.about()
 ```
 
-**Follow Me on Instagram: [@9_Tay](https://www.instagram.com/9_tay). :cherry_blossom:**
+**Follow Me on Instagram: [@9_Tay](https://www.instagram.com/9_tay). 🌸**
 
-# Thank You :)
+# Thank You :) 🌸
