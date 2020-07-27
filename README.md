@@ -29,7 +29,7 @@ mail.send(receiver='someone2@gmail.com',
 
 **Check Send Status**
 ```py
-# Uaing (status) Variable
+# Using (status) Variable
 print(mail.status)
 
 # Example:
