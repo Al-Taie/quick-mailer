@@ -22,17 +22,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-
-import ssl
-from email.mime.application import MIMEApplication
-from email.mime.audio import MIMEAudio
-from email.mime.image import MIMEImage
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-from smtplib import SMTP_SSL
+import ssl as _ssl
+from email.mime.application import MIMEApplication as _MIMEApp
+from email.mime.audio import MIMEAudio as _MIMEAudio
+from email.mime.image import MIMEImage as _MIMEImage
+from email.mime.multipart import MIMEMultipart as _MIMEMultipart
+from email.mime.text import MIMEText as _MIMEText
+from smtplib import SMTP_SSL as _SMTP_SSL
 
 __all__ = ['Mailer']
-VERSION = '0.0.3'
+VERSION = '0.0.4'
 
 
 class Mailer:
@@ -42,12 +41,38 @@ class Mailer:
         :param password: Yor Email Password
         """
         self.email = email
-        self.password = password
+        self._password = password
+        self.status = bool()
 
     @staticmethod
-    def file_reader(filename):
-        with open(filename, 'rb') as f:
-            return f.read()
+    def about():
+        info = """
+About Module:
+    This Module help you to send fast Email.
+    And you can attach [image, audio, and other files] easily.
+
+About Developer:
+    Name: Ahmed Al-Taie
+    Github: https://github.com/Al-Taie
+    Pypi: https://pypi.org/user/Altaie
+    Instagram: https://www.instagram.com/9_Tay
+
+    Finally Thanks For Use My Module.
+    You Can Join Our Discord For Any Question:
+    Discord: https://discord.gg/x69eZn
+            """
+        print(info)
+        return
+
+    @staticmethod
+    def _file_reader(filename):
+        try:
+            with open(filename, 'rb') as f:
+                return f.read()
+        except Exception as e:
+            del e
+            print('Error: File Not Found!')
+            quit()
 
     def send(self,
              receiver: str,
@@ -66,38 +91,38 @@ class Mailer:
         :return: Boolean
         """
 
-        msg = MIMEMultipart()
+        msg = _MIMEMultipart()
 
         if message is not None:
-            text = MIMEText(message)
+            text = _MIMEText(message)
             msg.attach(text)
 
         if image is not None:
-            image_data = self.file_reader(image)
-            image = MIMEImage(_imagedata=image_data, name=image)
+            image_data = self._file_reader(image)
+            image = _MIMEImage(_imagedata=image_data, name=image)
             msg.attach(image)
 
         if audio is not None:
-            audio_data = self.file_reader(audio)
-            audio = MIMEAudio(_audiodata=audio_data, name=audio, _subtype='')
+            audio_data = self._file_reader(audio)
+            audio = _MIMEAudio(_audiodata=audio_data, name=audio, _subtype='')
             msg.attach(audio)
 
         if file is not None:
-            file_data = self.file_reader(file)
-            file = MIMEApplication(_data=file_data, name=file)
+            file_data = self._file_reader(file)
+            file = _MIMEApp(_data=file_data, name=file)
             msg.attach(file)
 
         msg['Subject'] = subject
         msg['From'] = self.email
         msg['To'] = receiver
 
-        context = ssl.create_default_context()
+        context = _ssl.create_default_context()
 
-        with SMTP_SSL(host='smtp.gmail.com',
-                      port=465, context=context) as server:
+        with _SMTP_SSL(host='smtp.gmail.com',
+                       port=465, context=context) as server:
             try:
                 server.login(user=self.email,
-                             password=self.password)
+                             password=self._password)
             except Exception as e:
                 del e
                 print('Email And Password Not Accepted, Visit This Link:\n'
@@ -110,7 +135,8 @@ class Mailer:
                                     msg=msg.as_string())
                 except Exception as e:
                     del e
+                    self.status = False
                     return False
                 else:
+                    self.status = True
                     return True
-
