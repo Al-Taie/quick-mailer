@@ -32,7 +32,7 @@ from email.mime.text import MIMEText
 from smtplib import SMTP_SSL
 
 __all__ = ['Mailer']
-VERSION = '0.0.2'
+VERSION = '0.0.3'
 
 
 class Mailer:
@@ -74,17 +74,17 @@ class Mailer:
 
         if image is not None:
             image_data = self.file_reader(image)
-            image = MIMEImage(image_data, name=image)
+            image = MIMEImage(_imagedata=image_data, name=image)
             msg.attach(image)
 
         if audio is not None:
             audio_data = self.file_reader(audio)
-            audio = MIMEAudio(audio_data, name=audio)
+            audio = MIMEAudio(_audiodata=audio_data, name=audio, _subtype='')
             msg.attach(audio)
 
         if file is not None:
             file_data = self.file_reader(file)
-            file = MIMEApplication(file_data, name=file)
+            file = MIMEApplication(_data=file_data, name=file)
             msg.attach(file)
 
         msg['Subject'] = subject
