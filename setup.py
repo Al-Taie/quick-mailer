@@ -13,7 +13,7 @@ with open("README.md", "r") as f:
 
 setup(
     name="quick-mailer",
-    version="0.0.4",
+    version="0.0.5",
     author="Ahmed Al-Taie",
     author_email="agprosup@gmail.com",
     description='This Module help you to send fast Email.🌸',
