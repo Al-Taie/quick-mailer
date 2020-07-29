@@ -31,7 +31,7 @@ from email.mime.text import MIMEText as _MIMEText
 from smtplib import SMTP_SSL as _SMTP_SSL
 
 __all__ = ['Mailer']
-VERSION = '0.0.4'
+VERSION = '0.0.5'
 
 
 class Mailer:
@@ -66,13 +66,8 @@ About Developer:
 
     @staticmethod
     def _file_reader(filename):
-        try:
-            with open(filename, 'rb') as f:
-                return f.read()
-        except Exception as e:
-            del e
-            print('Error: File Not Found!')
-            quit()
+        with open(filename, 'rb') as f:
+            return f.read()
 
     def send(self,
              receiver: str,
@@ -93,24 +88,29 @@ About Developer:
 
         msg = _MIMEMultipart()
 
-        if message is not None:
-            text = _MIMEText(message)
-            msg.attach(text)
+        try:
+            if message is not None:
+                text = _MIMEText(message)
+                msg.attach(text)
 
-        if image is not None:
-            image_data = self._file_reader(image)
-            image = _MIMEImage(_imagedata=image_data, name=image)
-            msg.attach(image)
+            if image is not None:
+                image_data = self._file_reader(image)
+                image = _MIMEImage(_imagedata=image_data, name=image)
+                msg.attach(image)
 
-        if audio is not None:
-            audio_data = self._file_reader(audio)
-            audio = _MIMEAudio(_audiodata=audio_data, name=audio, _subtype='')
-            msg.attach(audio)
+            if audio is not None:
+                audio_data = self._file_reader(audio)
+                audio = _MIMEAudio(_audiodata=audio_data, name=audio, _subtype='')
+                msg.attach(audio)
 
-        if file is not None:
-            file_data = self._file_reader(file)
-            file = _MIMEApp(_data=file_data, name=file)
-            msg.attach(file)
+            if file is not None:
+                file_data = self._file_reader(file)
+                file = _MIMEApp(_data=file_data, name=file)
+                msg.attach(file)
+        except Exception:
+            print('Error: File Not Found!')
+            self.status = False
+            return False
 
         msg['Subject'] = subject
         msg['From'] = self.email
@@ -123,18 +123,17 @@ About Developer:
             try:
                 server.login(user=self.email,
                              password=self._password)
-            except Exception as e:
-                del e
+            except Exception:
                 print('Email And Password Not Accepted, Visit This Link:\n'
                       'https://support.google.com/mail/?p=BadCredentials')
+                self.status = False
                 return False
             else:
                 try:
                     server.sendmail(from_addr=self.email,
                                     to_addrs=receiver,
                                     msg=msg.as_string())
-                except Exception as e:
-                    del e
+                except Exception:
                     self.status = False
                     return False
                 else:
