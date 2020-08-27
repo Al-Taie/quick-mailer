@@ -5,7 +5,7 @@ This Module help you to send **fast Email. 🌸**
 
 And you can attach **image, audio, and other files easily.**
 
-The Module support **Gmail** right now, but in the nearly future will support other mail services.
+The Module support **Gmail And Microsoft** right now, but in the nearly future will support other mail services.
 
 # Installation:
 ```cmd
