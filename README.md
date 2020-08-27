@@ -32,11 +32,18 @@ mail.send(receiver='someone@example.com',  # Email From Any service Provider
 # Uaing (status) Variable
 print(mail.status)
 
-# Example:
+# Example For One Receiver:
 if mail.status:
   pass
 else:
   pass
+  
+ # Note:
+ # IF You Put List Emails Receivers
+ # Variable Will Return Dictionary Results.
+ 
+ # IF You Allowed Repeat
+ # Variable Will Return List Results.
 ```
 
 **Parameters**
