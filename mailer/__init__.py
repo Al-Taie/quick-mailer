@@ -28,22 +28,43 @@ from email.mime.audio import MIMEAudio as _MIMEAudio
 from email.mime.image import MIMEImage as _MIMEImage
 from email.mime.multipart import MIMEMultipart as _MIMEMultipart
 from email.mime.text import MIMEText as _MIMEText
-from smtplib import SMTP_SSL as _SMTP_SSL
+from smtplib import SMTP as _SMTP
+from time import sleep as _sleep
 
-__all__ = ['Mailer']
-VERSION = '0.0.5'
+__all__ = ['Mailer', '__VERSION__', 'example']
+__VERSION__ = '0.1.0'
 
 
+# Main Class
 class Mailer:
     def __init__(self, email: str, password: str):
         """
         :param email: Your Email Address
         :param password: Yor Email Password
         """
+        # Variables
         self.email = email
-        self._password = password
+        self.__password = password
+        self.__server = None
         self.status = bool()
+        self.login = bool()
+        self.multi = bool()
+        self.__sleep = int()
+        self.__repeat = 1
+        self.count_rec = 1
+        self.count_cc = int()
+        self.count_bcc = int()
+        self.count_msg = self.__repeat*self.count_rec
+        self.__port = 587
+        self.GMAIL = 'smtp.gmail.com'
+        # self.YAHOO = 'smtp.mail.yahoo.com' # Unsupported Now
+        self.MICROSOFT = 'smtp.office365.com'
+        self.provider = self.GMAIL
 
+        # Apply Settings
+        self.settings()
+
+    # About Method
     @staticmethod
     def about():
         info = """
@@ -59,25 +80,88 @@ About Developer:
 
     Finally Thanks For Use My Module.
     You Can Join Our Discord For Any Question:
-    Discord: https://discord.gg/x69eZn
+    Discord: https://discord.gg/gWdCNv7
             """
         print(info)
         return
 
+    # File Reader Method
     @staticmethod
-    def _file_reader(filename):
+    def _file_reader(filename: str):
         with open(filename, 'rb') as f:
             return f.read()
 
+    # Settings Method
+    def settings(self,
+                 repeat: int = 1,
+                 sleep=None,
+                 provider: str = None,
+                 multi=False):
+        """
+        :param multi:
+        :type multi:
+        :param repeat: Repeat Number
+        :param sleep: Set Sleep Time (In Seconds)
+        :param provider: See example Function
+        :return: None
+        """
+        self.__repeat = repeat
+        self.multi = multi
+
+        if sleep:
+            self.__sleep = sleep
+
+        if provider:
+            self.provider = provider
+
+    # Login Method
+    def __login(self):
+        context = _ssl.create_default_context()
+
+        self.__server = _SMTP(host=self.provider,
+                              port=self.__port)
+        self.__server.ehlo()
+        self.__server.starttls(context=context)
+        self.__server.ehlo()
+
+        try:
+            self.__server.login(user=self.email,
+                                password=self.__password)
+            self.login = True
+            return True
+        except Exception as e:
+            if self.provider == self.GMAIL:
+                problem = """
+Error: Email And Password Not Accepted.
+
+Note:
+    Make sure you Allowed less secure apps,
+    if you didn't, visit this link:
+    ==> https://myaccount.google.com/lesssecureapps
+
+    For More information visit this link:
+    ==> https://support.google.com/mail/?p=BadCredentials
+                    """
+            else:
+                problem = e
+            print(problem)
+            self.login = False
+            return False
+
+    # Send Method
     def send(self,
-             receiver: str,
+             receiver,
+             cc=None,
+             bcc=None,
              subject: str = None,
              message: str = None,
              image: str = None,
              audio: str = None,
              file: str = None):
         """
-        :param receiver: Email Address
+        :param cc: Email Address as String or List. (Carbon Copy)
+        :param bcc: Email Address as String or List. (Blind Carbon Copy)
+        :param receiver: Email Address as String or List
         :param subject: Message Title
         :param message: Your Message
         :param image: Image File Name
@@ -87,6 +171,8 @@ About Developer:
         """
 
         msg = _MIMEMultipart()
+        msg['Subject'] = subject
+        msg['From'] = self.email
 
         try:
             if message is not None:
@@ -112,30 +198,129 @@ About Developer:
             self.status = False
             return False
 
-        msg['Subject'] = subject
-        msg['From'] = self.email
-        msg['To'] = receiver
+        send_info = []
+        multi_info = {}
 
-        context = _ssl.create_default_context()
+        if 'list' in str(type(receiver)):
+            self.count_rec = len(receiver)
+            receiver = ','.join(i for i in receiver)
 
-        with _SMTP_SSL(host='smtp.gmail.com',
-                       port=465, context=context) as server:
-            try:
-                server.login(user=self.email,
-                             password=self._password)
-            except Exception:
-                print('Email And Password Not Accepted, Visit This Link:\n'
-                      'https://support.google.com/mail/?p=BadCredentials')
-                self.status = False
-                return False
+        if 'list' in str(type(cc)):
+            self.count_cc = len(cc)
+            cc = ','.join(i for i in cc)
+
+        if 'list' in str(type(bcc)):
+            self.count_bcc = len(bcc)
+            bcc = ','.join(i for i in bcc)
+
+        if self.__login():
+            msg['To'] = receiver
+            msg['CC'] = cc
+            msg['BCC'] = bcc
+
+            if self.multi:
+                for _ in range(self.__repeat):
+                    try:
+                        self.__server.sendmail(from_addr=self.email,
+                                               to_addrs=receiver,
+                                               msg=msg.as_string())
+                    except Exception:
+                        if self.__repeat == 1 & self.count_rec == 1:
+                            self.status = False
+                        else:
+                            send_info.append(False)
+
+                    else:
+                        if self.__repeat == 1 & self.count_rec == 1:
+                            self.status = True
+                        else:
+                            send_info.append(True)
+                            self.status = send_info
+
+                    finally:
+                        _sleep(self.__sleep)
             else:
-                try:
-                    server.sendmail(from_addr=self.email,
-                                    to_addrs=receiver,
-                                    msg=msg.as_string())
-                except Exception:
-                    self.status = False
-                    return False
-                else:
-                    self.status = True
-                    return True
+                for rec in receiver.split(','):
+                    send_info = []
+                    for _ in range(self.__repeat):
+                        try:
+                            self.__server.sendmail(from_addr=self.email,
+                                                   to_addrs=rec,
+                                                   msg=msg.as_string())
+                        except Exception as e:
+                            if self.__repeat == 1 & self.count_rec == 1:
+                                self.status = False
+                            else:
+                                send_info.append(False)
+
+                            if 'OutboundSpamException' in str(e):
+                                print('Error: Please Login To Your Account And Verify it.')
+                                break
+
+                        else:
+                            if self.__repeat == 1 & self.count_rec == 1:
+                                self.status = True
+                            else:
+                                send_info.append(True)
+                                self.status = send_info
+                                multi_info[rec] = send_info
+
+                        finally:
+                            _sleep(self.__sleep)
+
+                    if self.count_rec != 1:
+                        self.status = multi_info
+
+        self.__server.close()
+
+
+# Example Function
+def example():
+    ex = """
+####################
+# [Copy This Code] #
+####################
+
+mail = Mailer(email='someone@gmail.com',
+              password='***')
+
+# IF You Want Repeat Sending, Change repeat Value
+# And IF You Want Change Mail Service
+# Chose One: mail.[GMAIL, MICROSOFT]
+mail.settings(repeat=1,
+              sleep=0,
+              provider=mail.GMAIL,
+              multi=False)
+
+# Send Message
+mail.send(receiver='someone@example.com',  # Email From Any service Provider
+          cc='someone1@example.com'
+          bcc='someone2@example.com'
+          subject='TEST',
+          message='HI, This Message From Python :)',
+          image=None,   # Image File Path
+          audio=None,   # Audio File Path
+          file=None)    # Any File Path
+
+# Login Status Info
+print('login:', mail.login)
+
+# Sending Status Info
+print('status:', mail.status)
+
+# CC Receivers Count
+print('CC count:', mail.count_cc)
+
+# BCC Receivers Count
+print('BCC count:', mail.count_bcc)
+
+# Receivers Count
+print('Receivers count:', mail.count_rec)
+
+# Messages Count IF You Allowed Repeat
+print('Messages count:', mail.count_msg)
+
+# For More Information
+mail.about()
+        """
+    print(ex)
