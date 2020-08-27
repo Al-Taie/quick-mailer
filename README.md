@@ -88,10 +88,7 @@ mail.settings(multi=True)
 
 mail.send(receiver=['someone@example.com', 'someone1@example.com'],
           subject='TEST',
-          message='HI, This Message From Python :)',
-          image='img.jpg',      # Image File Path
-          audio='sound.mp3',    # Audio File Path
-          file='file.zip')      # Any File Path
+          message='HI, This Message From Python :)')
 ```
 
 **Counter Variables**
