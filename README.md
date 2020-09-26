@@ -1,5 +1,10 @@
 ![image](images/bsmala.png)
 
+[![Downloads](https://pepy.tech/badge/quick-mailer)](https://pepy.tech/project/quick-mailer)
+[![Downloads](https://pepy.tech/badge/quick-mailer/month)](https://pepy.tech/project/quick-mailer/month)
+[![Downloads](https://pepy.tech/badge/quick-mailer/week)](https://pepy.tech/project/quick-mailer/week)
+<a href="https://www.instagram.com/9_Tay"><img src="https://img.shields.io/badge/instagram-%23E4415F?style=flat&logo=instagram&logoColor=white"/></a>
+
 # Description
 This Module help you to send **fast Email. 🌸**
 
