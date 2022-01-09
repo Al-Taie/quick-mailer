@@ -1,4 +1,4 @@
-![image](images/bsmala.png)
+![image](../images/bsmala.png)
 
 [![Downloads](https://pepy.tech/badge/quick-mailer)](https://pepy.tech/project/quick-mailer)
 [![Downloads](https://pepy.tech/badge/quick-mailer/month)](https://pepy.tech/project/quick-mailer/month)
