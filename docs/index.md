@@ -1,37 +1,129 @@
-## Welcome to GitHub Pages
+![image](images/bsmala.png)
 
-You can use the [editor on GitHub](https://github.com/Al-Taie/quick-mailer/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
+[![Downloads](https://pepy.tech/badge/quick-mailer)](https://pepy.tech/project/quick-mailer)
+[![Downloads](https://pepy.tech/badge/quick-mailer/month)](https://pepy.tech/project/quick-mailer/month)
+[![Downloads](https://pepy.tech/badge/quick-mailer/week)](https://pepy.tech/project/quick-mailer/week)
+<a href="https://www.instagram.com/9_Tay"><img src="https://img.shields.io/badge/instagram-%23E4415F?style=flat&logo=instagram&logoColor=white"/></a>
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# Description
+This Module help you to send **fast Email. 🌸**
 
-### Markdown
+And you can attach **image, audio, and other files easily.**
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+The Module support **Gmail And Microsoft** right now, but in the nearly future will support other mail services.
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+# Installation:
+```cmd
+pip install quick-mailer
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+**[-->> pypi Link](https://pypi.org/project/quick-mailer)**
 
-### Jekyll Themes
+# Usage:
+**Send Message**
+```py
+from mailer import Mailer
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Al-Taie/quick-mailer/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+mail = Mailer(email='someone@gmail.com',
+              password='your_password')
 
-### Support or Contact
+mail.send(receiver='someone@example.com',  # Email From Any service Provider
+          subject='TEST',
+          message='HI, This Message From Python :)')
+```
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+**Check Send Status**
+```py
+# Uaing (status) Variable
+print(mail.status)
+
+# Example For One Receiver:
+if mail.status:
+  pass
+else:
+  pass
+  
+ # Note:
+ # IF You Put List Emails Receivers
+ # Variable Will Return Dictionary Results.
+ 
+ # IF You Allowed Repeat
+ # Variable Will Return List Results.
+```
+
+**Parameters**
+```py
+receiver: Email Address as String or List.                [Recuired]
+cc: Email Address as String or List.  (Carbon Copy)       [Optional]
+bcc: Email Address as String or List. (Blind Carbon Copy) [Optional]
+subject: Message Title.                                   [Optional]
+message: Your Message.                                    [Optional]
+image: Image File Name.               (Image Path)        [Optional]
+audio: Audio File Name.               (Audio Path)        [Optional]
+file: File Name.                      (Any File Path)     [Optional]
+```
+
+**Send Multi Files**
+```py
+mail.send(receiver='someone@example.com',  # Email From Any service Provider
+          subject='TEST',
+          message='HI, This Message From Python :)',
+          image='img.jpg',      # Image File Path
+          audio='sound.mp3',    # Audio File Path
+          file='file.zip')      # Any File Path
+```
+
+**Settings Method**
+```py
+mail.settings(repeat=1,             # To Repeat Sending
+              sleep=0,              # To Sleep After Send Each Message
+              provider=mail.GMAIL,  # Set Maill Service
+              multi=False)          # Default False, If You Set True
+                                    # Message Will Sent 4 Each Email Alone
+                                    # Else Will Sent To All Together
+```
+
+**Send Multi Emails**
+```py
+# One By One:
+mail.settings(multi=False)
+
+# In Same Message:
+mail.settings(multi=True)
+
+mail.send(receiver=['someone@example.com', 'someone1@example.com'],
+          subject='TEST',
+          message='HI, This Message From Python :)')
+```
+
+**Counter Variables**
+```py
+# CC Receivers Count
+print('CC count:', mail.count_cc)
+
+# BCC Receivers Count
+print('BCC count:', mail.count_bcc)
+
+# Receivers Count
+print('Receivers count:', mail.count_rec)
+
+# Messages Count
+print('Messages count:', mail.count_msg)
+```
+
+**Example Function**
+```py
+from mailer import example
+
+example()
+```
+
+**About Method**
+```py
+# You Can Use (mail.about) Method for more info.
+mail.about()
+```
+
+**Follow Me on Instagram: [@9_Tay](https://www.instagram.com/9_tay). 🌸**
+
+# Thank You :) 🌸
