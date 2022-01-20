@@ -1,0 +1,13 @@
+LICENSE
+README.md
+setup.py
+mailer/__init__.py
+mailer/exceptions.py
+mailer/login.py
+mailer/mailer.py
+mailer/send.py
+mailer/utils.py
+quick_mailer.egg-info/PKG-INFO
+quick_mailer.egg-info/SOURCES.txt
+quick_mailer.egg-info/dependency_links.txt
+quick_mailer.egg-info/top_level.txt
