@@ -56,7 +56,7 @@ else:
 receiver: Email Address as String or List.                [Recuired]
 cc: Email Address as String or List.  (Carbon Copy)       [Optional]
 bcc: Email Address as String or List. (Blind Carbon Copy) [Optional]
-no_reply: Set Another Email To Reoly                      [Optional]
+no_reply: Set Another Email To Reply                      [Optional]
 subject: Message Title.                                   [Optional]
 message: Your Message.                                    [Optional]
 image: Image File Name.               (Image Path)        [Optional]
