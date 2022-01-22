@@ -33,6 +33,19 @@ mail.send(receiver='someone@example.com',  # Email From Any service Provider
           message='HI, This Message From Python :)')
 ```
 
+**Parameters**
+```py
+receiver: Email Address as String or List.                [Recuired]
+cc: Email Address as String or List.  (Carbon Copy)       [Optional]
+bcc: Email Address as String or List. (Blind Carbon Copy) [Optional]
+no_reply: Set Another Email To Reply                      [Optional]
+subject: Message Title.                                   [Optional]
+message: Your Message.                                    [Optional]
+image: Image File Name.               (Image Path)        [Optional]
+audio: Audio File Name.               (Audio Path)        [Optional]
+file: File Name.                      (Any File Path)     [Optional]
+```
+
 **Check Send Status**
 ```py
 # Using (status) Attribute 
@@ -50,19 +63,6 @@ else:
  
  # IF You Allowed Repeat
  # The Attribute Will provide Results List.
-```
-
-**Parameters**
-```py
-receiver: Email Address as String or List.                [Recuired]
-cc: Email Address as String or List.  (Carbon Copy)       [Optional]
-bcc: Email Address as String or List. (Blind Carbon Copy) [Optional]
-no_reply: Set Another Email To Reply                      [Optional]
-subject: Message Title.                                   [Optional]
-message: Your Message.                                    [Optional]
-image: Image File Name.               (Image Path)        [Optional]
-audio: Audio File Name.               (Audio Path)        [Optional]
-file: File Name.                      (Any File Path)     [Optional]
 ```
 
 **Send Multi Files**
