@@ -1,38 +1,41 @@
-import ssl as _ssl
-from smtplib import SMTP as _SMTP
+import ssl
+from smtplib import SMTP
+from ssl import SSLContext
+from typing import Text
 
 
 class Login:
+    _server: SMTP
+
     def __init__(self, email: str, password: str):
         """
         :param email: Your Email Address
         :param password: Yor Email Password
         """
-        # Variables
-        self.email = email
-        self.__password = password
-        self._server = None
-        self.status = bool()
-        self.login = bool()
-        self.multi = bool()
-        self._sleep = int()
-        self._repeat = 1
-        self.count_rec = 1
-        self.count_cc = int()
-        self.count_bcc = int()
-        self.count_msg = self._repeat * self.count_rec
-        self.__port = 587
-        self.GMAIL = 'smtp.gmail.com'
-        # self.YAHOO = 'smtp.mail.yahoo.com' # Unsupported Now
-        self.MICROSOFT = 'smtp.office365.com'
-        self.provider = self.GMAIL
+        # Attributes
+        self.email: Text = email
+        self.__password: Text = password
+        self.status: bool = bool()
+        self.login: bool = bool()
+        self.multi: bool = bool()
+        self._sleep: int = int()
+        self._repeat: int = 1
+        self.count_rec: int = 1
+        self.count_cc: int = int()
+        self.count_bcc: int = int()
+        self.count_msg: int = self._repeat * self.count_rec
+        self.__port: int = 587
+        self.GMAIL: Text = 'smtp.gmail.com'
+        # self.YAHOO: Text = 'smtp.mail.yahoo.com' # Unsupported Now
+        self.MICROSOFT: Text = 'smtp.office365.com'
+        self.provider: Text = self.GMAIL
 
     # Login Method
     def _login(self) -> bool:
-        context = _ssl.create_default_context()
+        context: SSLContext = ssl.create_default_context()
 
-        self._server = _SMTP(host=self.provider,
-                             port=self.__port)
+        self._server = SMTP(host=self.provider,
+                            port=self.__port)
         self._server.ehlo()
         self._server.starttls(context=context)
         self._server.ehlo()

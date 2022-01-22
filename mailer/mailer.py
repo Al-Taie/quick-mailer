@@ -9,7 +9,7 @@ class Mailer(Send):
         :param email: Your Email Address
         :param password: Yor Email Password
         """
-        # Variables
+        # Attributes
         super().__init__(email=email, password=password)
         # Apply Settings
         self.settings()
@@ -38,8 +38,8 @@ About Developer:
     # Settings Method
     def settings(self,
                  repeat: int = 1,
-                 sleep=None,
-                 provider: str = None,
+                 sleep: int = None,
+                 provider: Text = None,
                  multi=False) -> None:
         """
         :param multi:

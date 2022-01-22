@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: quick-mailer
-Version: 2022.1.19
+Version: 2022.1.21
 Summary: This Module help you to send fast Email.🌸
 Home-page: https://github.com/Al-Taie/quick-mailer
 Author: Ahmed Al-Taie
@@ -14,7 +14,7 @@ Classifier: Operating System :: OS Independent
 Description-Content-Type: text/markdown
 License-File: LICENSE
 
-![image](images/bsmala.png)
+![image](https://raw.githubusercontent.com/Al-Taie/quick-mailer/master/images/bsmala.png)
 
 [![Downloads](https://pepy.tech/badge/quick-mailer)](https://pepy.tech/project/quick-mailer)
 [![Downloads](https://pepy.tech/badge/quick-mailer/month)](https://pepy.tech/project/quick-mailer/month)
@@ -22,7 +22,7 @@ License-File: LICENSE
 <a href="https://www.instagram.com/9_Tay"><img src="https://img.shields.io/badge/instagram-%23E4415F?style=flat&logo=instagram&logoColor=white"/></a>
 
 # Description
-This Module help you to send **fast Email. ðŸŒ¸**
+This Module help you to send **fast Email. 🌸**
 
 And you can attach **image, audio, and other files easily.**
 
@@ -44,13 +44,27 @@ mail = Mailer(email='someone@gmail.com',
               password='your_password')
 
 mail.send(receiver='someone@example.com',  # Email From Any service Provider
+          no_reply='noreplay@example.com', # Redirect receiver to another email when try to reply.
           subject='TEST',
           message='HI, This Message From Python :)')
 ```
 
+**Parameters**
+```py
+receiver: Email Address as String or List.                [Recuired]
+cc: Email Address as String or List.  (Carbon Copy)       [Optional]
+bcc: Email Address as String or List. (Blind Carbon Copy) [Optional]
+no_reply: Set Another Email To Reply                      [Optional]
+subject: Message Title.                                   [Optional]
+message: Your Message.                                    [Optional]
+image: Image File Name.               (Image Path)        [Optional]
+audio: Audio File Name.               (Audio Path)        [Optional]
+file: File Name.                      (Any File Path)     [Optional]
+```
+
 **Check Send Status**
 ```py
-# Uaing (status) Variable
+# Using (status) Attribute 
 print(mail.status)
 
 # Example For One Receiver:
@@ -64,20 +78,7 @@ else:
  # Variable Will Return Dictionary Results.
  
  # IF You Allowed Repeat
- # Variable Will Return List Results.
-```
-
-**Parameters**
-```py
-receiver: Email Address as String or List.                [Recuired]
-cc: Email Address as String or List.  (Carbon Copy)       [Optional]
-bcc: Email Address as String or List. (Blind Carbon Copy) [Optional]
-no_reply: Set Another Email To Reoly                      [Optional]
-subject: Message Title.                                   [Optional]
-message: Your Message.                                    [Optional]
-image: Image File Name.               (Image Path)        [Optional]
-audio: Audio File Name.               (Audio Path)        [Optional]
-file: File Name.                      (Any File Path)     [Optional]
+ # The Attribute Will provide Results List.
 ```
 
 **Send Multi Files**
@@ -141,8 +142,8 @@ example()
 mail.about()
 ```
 
-**Follow Me on Instagram: [@9_Tay](https://www.instagram.com/9_tay). ðŸŒ¸**
+**Follow Me on Instagram: [@9_Tay](https://www.instagram.com/9_tay). 🌸**
 
-# Thank You :) ðŸŒ¸
+# Thank You :) 🌸
 🌸
 

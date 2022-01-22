@@ -1,9 +1,10 @@
-from email.mime.application import MIMEApplication as _MIMEApp
-from email.mime.audio import MIMEAudio as _MIMEAudio
-from email.mime.image import MIMEImage as _MIMEImage
-from email.mime.multipart import MIMEMultipart as _MIMEMultipart
-from email.mime.text import MIMEText as _MIMEText
-from time import sleep as _sleep
+from email.mime.application import MIMEApplication as MIMEApp
+from email.mime.audio import MIMEAudio
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from time import sleep
+from typing import Text, List, Dict
 
 from mailer.exceptions import ImageNotFoundError, AudioNotFoundError, OutboundSpamException
 from mailer.login import Login
@@ -18,7 +19,7 @@ class Send(Login):
         """
         # Variables
         super().__init__(email=email, password=password)
-        self._msg = _MIMEMultipart()
+        self._msg = MIMEMultipart()
 
     def __prepare_message(self,
                           receiver,
@@ -31,20 +32,20 @@ class Send(Login):
         self._msg['From'] = self.email
 
         if message is not None:
-            text = _MIMEText(message)
+            text = MIMEText(message)
             self._msg.attach(text)
 
         if list == type(receiver):
             self.count_rec = len(receiver)
-            receiver = ','.join(i for i in receiver)
+            receiver: Text = ','.join(i for i in receiver)
 
         if list == type(cc):
             self.count_cc = len(cc)
-            cc = ','.join(i for i in cc)
+            cc: Text = ','.join(i for i in cc)
 
         if list == type(bcc):
             self.count_bcc = len(bcc)
-            bcc = ','.join(i for i in bcc)
+            bcc: Text = ','.join(i for i in bcc)
 
         self._msg['To'] = receiver
         self._msg['CC'] = cc
@@ -56,22 +57,22 @@ class Send(Login):
                               audio: str = None,
                               file: str = None) -> None:
         if image is not None:
-            image_data = file_reader(image)
+            image_data: bytes | bool = file_reader(image)
             # assert image_data, ImageNotFoundError()
             assert image_data, ImageNotFoundError()
-            image = _MIMEImage(_imagedata=image_data, name=image)
+            image = MIMEImage(_imagedata=image_data, name=image)
             self._msg.attach(image)
 
         if audio is not None:
-            audio_data = file_reader(audio)
+            audio_data: bytes | bool = file_reader(audio)
             assert audio_data, AudioNotFoundError()
-            audio = _MIMEAudio(_audiodata=audio_data, name=audio, _subtype='')
+            audio = MIMEAudio(_audiodata=audio_data, name=audio, _subtype='')
             self._msg.attach(audio)
 
         if file is not None:
-            file_data = file_reader(file)
+            file_data: bytes | bool = file_reader(file)
             assert file_data, FileNotFoundError("File not exists in a path!")
-            file = _MIMEApp(_data=file_data, name=file)
+            file = MIMEApp(_data=file_data, name=file)
             self._msg.attach(file)
 
     # Send Method
@@ -98,8 +99,8 @@ class Send(Login):
         :return: Boolean
         """
 
-        send_info = []
-        multi_info = {}
+        send_info: List = []
+        multi_info: Dict = {}
 
         self.__prepare_message(receiver=receiver, cc=cc,
                                bcc=bcc, subject=subject,
@@ -129,7 +130,7 @@ class Send(Login):
                             self.status = send_info
 
                     finally:
-                        _sleep(self._sleep)
+                        sleep(self._sleep)
             else:
                 for rec in receiver.split(','):
                     send_info = []
@@ -155,7 +156,7 @@ class Send(Login):
                                 multi_info[rec] = send_info
 
                         finally:
-                            _sleep(self._sleep)
+                            sleep(self._sleep)
 
                     if self.count_rec != 1:
                         self.status = multi_info

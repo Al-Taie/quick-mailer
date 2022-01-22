@@ -4,12 +4,14 @@
 # Instagram: @9_Tay
 # Mail: agprosup@gmail.com
 # Created Time:  2020-07-26 21:41:25
+# Update Time:   2022-01-21 12:27:23
 #############################################
 
-from mailer import __VERSION__
 from setuptools import setup, find_packages
 
-with open('README.md') as f:
+from mailer import __VERSION__
+
+with open('README.md', encoding='utf-8') as f:
     long_description = f.read()
 
 setup(name='quick-mailer',
@@ -17,7 +19,7 @@ setup(name='quick-mailer',
       author='Ahmed Al-Taie',
       author_email='agprosup@gmail.com',
       description='This Module help you to send fast Email.🌸',
-      long_description=long_description+'🌸',
+      long_description=long_description + '🌸',
       long_description_content_type='text/markdown',
       keywords=['smtp', 'mail', 'gmail', 'email'],
       url='https://github.com/Al-Taie/quick-mailer',
