@@ -1,4 +1,4 @@
-![image](../images/bsmala.png)
+![image](https://github.com/Al-Taie/quick-mailer/blob/master/images/bsmala.png)
 
 [![Downloads](https://pepy.tech/badge/quick-mailer)](https://pepy.tech/project/quick-mailer)
 [![Downloads](https://pepy.tech/badge/quick-mailer/month)](https://pepy.tech/project/quick-mailer/month)
@@ -28,13 +28,27 @@ mail = Mailer(email='someone@gmail.com',
               password='your_password')
 
 mail.send(receiver='someone@example.com',  # Email From Any service Provider
+          no_reply='noreplay@example.com', # Redirect receiver to another email when try to reply.
           subject='TEST',
           message='HI, This Message From Python :)')
 ```
 
+**Parameters**
+```py
+receiver: Email Address as String or List.                [Recuired]
+cc: Email Address as String or List.  (Carbon Copy)       [Optional]
+bcc: Email Address as String or List. (Blind Carbon Copy) [Optional]
+no_reply: Set Another Email To Reply                      [Optional]
+subject: Message Title.                                   [Optional]
+message: Your Message.                                    [Optional]
+image: Image File Name.               (Image Path)        [Optional]
+audio: Audio File Name.               (Audio Path)        [Optional]
+file: File Name.                      (Any File Path)     [Optional]
+```
+
 **Check Send Status**
 ```py
-# Uaing (status) Variable
+# Using (status) Attribute 
 print(mail.status)
 
 # Example For One Receiver:
@@ -48,19 +62,7 @@ else:
  # Variable Will Return Dictionary Results.
  
  # IF You Allowed Repeat
- # Variable Will Return List Results.
-```
-
-**Parameters**
-```py
-receiver: Email Address as String or List.                [Recuired]
-cc: Email Address as String or List.  (Carbon Copy)       [Optional]
-bcc: Email Address as String or List. (Blind Carbon Copy) [Optional]
-subject: Message Title.                                   [Optional]
-message: Your Message.                                    [Optional]
-image: Image File Name.               (Image Path)        [Optional]
-audio: Audio File Name.               (Audio Path)        [Optional]
-file: File Name.                      (Any File Path)     [Optional]
+ # The Attribute Will provide Results List.
 ```
 
 **Send Multi Files**
