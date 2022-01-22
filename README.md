@@ -28,13 +28,14 @@ mail = Mailer(email='someone@gmail.com',
               password='your_password')
 
 mail.send(receiver='someone@example.com',  # Email From Any service Provider
+          no_reply='noreplay@example.com', # Redirect receiver to another email when try to reply.
           subject='TEST',
           message='HI, This Message From Python :)')
 ```
 
 **Check Send Status**
 ```py
-# Uaing (status) Variable
+# Using (status) Attribute 
 print(mail.status)
 
 # Example For One Receiver:
@@ -48,7 +49,7 @@ else:
  # Variable Will Return Dictionary Results.
  
  # IF You Allowed Repeat
- # Variable Will Return List Results.
+ # The Attribute Will provide Results List.
 ```
 
 **Parameters**
