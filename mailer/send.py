@@ -4,7 +4,7 @@ from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from time import sleep
-from typing import Text, List, Dict
+from typing import Text, List, Dict, Union
 
 from mailer.exceptions import ImageNotFoundError, AudioNotFoundError, OutboundSpamException
 from mailer.login import Login
@@ -57,20 +57,20 @@ class Send(Login):
                               audio: str = None,
                               file: str = None) -> None:
         if image is not None:
-            image_data: bytes | bool = file_reader(image)
+            image_data: Union[bytes, bool] = file_reader(image)
             # assert image_data, ImageNotFoundError()
             assert image_data, ImageNotFoundError()
             image = MIMEImage(_imagedata=image_data, name=image)
             self._msg.attach(image)
 
         if audio is not None:
-            audio_data: bytes | bool = file_reader(audio)
+            audio_data: Union[bytes, bool] = file_reader(audio)
             assert audio_data, AudioNotFoundError()
             audio = MIMEAudio(_audiodata=audio_data, name=audio, _subtype='')
             self._msg.attach(audio)
 
         if file is not None:
-            file_data: bytes | bool = file_reader(file)
+            file_data: Union[bytes, bool] = file_reader(file)
             assert file_data, FileNotFoundError("File not exists in a path!")
             file = MIMEApp(_data=file_data, name=file)
             self._msg.attach(file)

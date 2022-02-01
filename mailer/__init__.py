@@ -26,4 +26,4 @@ from mailer.mailer import Mailer
 from mailer.utils import example
 
 __all__ = ['Mailer', '__VERSION__', 'example']
-__VERSION__ = '2022.2.1'
+__VERSION__ = '2022.2.2'
