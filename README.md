@@ -18,9 +18,9 @@ The Module support **Gmail And Microsoft** right now, but in the nearly future w
 pip install quick-mailer
 ```
 
-[//]: # (**[-->> pypi Link]&#40;https://pypi.org/project/quick-mailer&#41;**)
+**[-->> pypi Link](https://pypi.org/project/quick-mailer)**
 
-**[-->> GitHub Link](https://github.com/Al-Taie/quick-mailer)**
+[//]: # (**[-->> GitHub Link]&#40;https://github.com/Al-Taie/quick-mailer&#41;**)
 
 # Usage:
 
