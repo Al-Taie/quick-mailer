@@ -32,7 +32,7 @@ class Send(Login):
         self._msg['From'] = self.email
 
         if message is not None:
-            text = MIMEText(message)
+            text = MIMEText(message, 'html')
             self._msg.attach(text)
 
         if list == type(receiver):

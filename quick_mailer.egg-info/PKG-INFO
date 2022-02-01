@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: quick-mailer
-Version: 2022.1.21
+Version: 2022.2.1
 Summary: This Module help you to send fast Email.🌸
 Home-page: https://github.com/Al-Taie/quick-mailer
 Author: Ahmed Al-Taie
@@ -33,7 +33,8 @@ The Module support **Gmail And Microsoft** right now, but in the nearly future w
 pip install quick-mailer
 ```
 
-**[-->> pypi Link](https://pypi.org/project/quick-mailer)**
+[//]: # (**[-->> pypi Link]&#40;https://pypi.org/project/quick-mailer&#41;**)
+**[-->> GitHub Link](https://github.com/Al-Taie/quick-mailer)**
 
 # Usage:
 **Send Message**
@@ -141,6 +142,10 @@ example()
 # You Can Use (mail.about) Method for more info.
 mail.about()
 ```
+
+#### Changelogs
+> - 2022.2.1 update:
+> - - Support Html Message
 
 **Follow Me on Instagram: [@9_Tay](https://www.instagram.com/9_tay). 🌸**
 

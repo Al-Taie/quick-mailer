@@ -13,14 +13,19 @@ And you can attach **image, audio, and other files easily.**
 The Module support **Gmail And Microsoft** right now, but in the nearly future will support other mail services.
 
 # Installation:
+
 ```cmd
 pip install quick-mailer
 ```
 
 **[-->> pypi Link](https://pypi.org/project/quick-mailer)**
 
+[//]: # (**[-->> GitHub Link]&#40;https://github.com/Al-Taie/quick-mailer&#41;**)
+
 # Usage:
+
 **Send Message**
+
 ```py
 from mailer import Mailer
 
@@ -121,10 +126,18 @@ example()
 ```
 
 **About Method**
+
 ```py
 # You Can Use (mail.about) Method for more info.
 mail.about()
 ```
+
+#### Changelogs
+
+> - 2022.2.1 update:
+> -
+
+- Support Html Message
 
 **Follow Me on Instagram: [@9_Tay](https://www.instagram.com/9_tay). 🌸**
 

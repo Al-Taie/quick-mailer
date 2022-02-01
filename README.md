@@ -18,6 +18,7 @@ pip install quick-mailer
 ```
 
 **[-->> pypi Link](https://pypi.org/project/quick-mailer)**
+[//]: # (**[-->> GitHub Link]&#40;https://github.com/Al-Taie/quick-mailer&#41;**)
 
 # Usage:
 **Send Message**
@@ -121,10 +122,18 @@ example()
 ```
 
 **About Method**
+
 ```py
 # You Can Use (mail.about) Method for more info.
 mail.about()
 ```
+
+#### Changelogs
+
+> - 2022.2.1 update:
+> -
+
+- Support Html Message
 
 **Follow Me on Instagram: [@9_Tay](https://www.instagram.com/9_tay). 🌸**
 
