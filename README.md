@@ -18,6 +18,7 @@ pip install quick-mailer
 ```
 
 **[-->> pypi Link](https://pypi.org/project/quick-mailer)**
+
 [//]: # (**[-->> GitHub Link]&#40;https://github.com/Al-Taie/quick-mailer&#41;**)
 
 # Usage:
