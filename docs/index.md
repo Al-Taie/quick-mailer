@@ -18,9 +18,9 @@ The Module support **Gmail And Microsoft** right now, but in the nearly future w
 pip install quick-mailer
 ```
 
-[//]: # (**[-->> pypi Link]&#40;https://pypi.org/project/quick-mailer&#41;**)
+**[-->> pypi Link](https://pypi.org/project/quick-mailer)**
 
-**[-->> GitHub Link](https://github.com/Al-Taie/quick-mailer)**
+[//]: # (**[-->> GitHub Link]&#40;https://github.com/Al-Taie/quick-mailer&#41;**)
 
 # Usage:
 
@@ -134,9 +134,14 @@ mail.about()
 
 #### Changelogs
 
-> - 2022.2.2 update:
-> - - Support Html Message
-> - - Fix issue #1 TypeError on python < 3.10
+> > 2022.2.10 update:
+> - Fix issue #3 TypeError on python < 3.10
+
+<br>
+
+> > 2022.2.2 update:
+> - Support Html Message
+> - Fix issue #1 TypeError on python < 3.10
 
 **Follow Me on Instagram: [@9_Tay](https://www.instagram.com/9_tay). 🌸**
 

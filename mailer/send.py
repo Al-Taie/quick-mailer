@@ -59,19 +59,28 @@ class Send(Login):
         if image is not None:
             image_data: Union[bytes, bool] = file_reader(image)
             # assert image_data, ImageNotFoundError()
-            assert image_data, ImageNotFoundError()
+
+            if not image_data:
+                raise ImageNotFoundError()
+
             image = MIMEImage(_imagedata=image_data, name=image)
             self._msg.attach(image)
 
         if audio is not None:
             audio_data: Union[bytes, bool] = file_reader(audio)
-            assert audio_data, AudioNotFoundError()
+
+            if not audio_data:
+                raise AudioNotFoundError()
+
             audio = MIMEAudio(_audiodata=audio_data, name=audio, _subtype='')
             self._msg.attach(audio)
 
         if file is not None:
             file_data: Union[bytes, bool] = file_reader(file)
-            assert file_data, FileNotFoundError("File not exists in a path!")
+
+            if not file_data:
+                raise FileNotFoundError("File not exists in a path!")
+
             file = MIMEApp(_data=file_data, name=file)
             self._msg.attach(file)
 

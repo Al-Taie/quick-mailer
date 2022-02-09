@@ -134,9 +134,14 @@ mail.about()
 
 #### Changelogs
 
-> - 2022.2.2 update:
-> - - Support Html Message
-> - - Fix issue #1 TypeError on python < 3.10
+> > 2022.2.10 update:
+> - Fix issue #3 TypeError on python < 3.10
+
+<br>
+
+> > 2022.2.2 update:
+> - Support Html Message
+> - Fix issue #1 TypeError on python < 3.10
 
 **Follow Me on Instagram: [@9_Tay](https://www.instagram.com/9_tay). 🌸**
 

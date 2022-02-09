@@ -1,7 +1,7 @@
-from typing import Text
+from typing import Text, Union
 
 
-def file_reader(filename: str) -> bytes | bool:
+def file_reader(filename: str) -> Union[bytes, bool]:
     try:
         with open(filename, 'rb') as f:
             return f.read()
