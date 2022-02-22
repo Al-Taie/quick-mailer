@@ -3,6 +3,7 @@ from email.mime.audio import MIMEAudio
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.utils import formataddr
 from time import sleep
 from typing import Text, List, Dict, Union
 
@@ -22,14 +23,16 @@ class Send(Login):
         self._msg = MIMEMultipart()
 
     def __prepare_message(self,
-                          receiver,
-                          cc=None,
-                          bcc=None,
+                          receiver: str,
+                          receiver_name: str = '',
+                          sender_name: str = '',
+                          cc: str = None,
+                          bcc: str = None,
                           no_reply: str = None,
                           subject: str = None,
                           message: str = None) -> None:
         self._msg['Subject'] = subject
-        self._msg['From'] = self.email
+        self._msg['From'] = formataddr(pair=(sender_name, self.email))
 
         if message is not None:
             text = MIMEText(message, 'html')
@@ -47,7 +50,7 @@ class Send(Login):
             self.count_bcc = len(bcc)
             bcc: Text = ','.join(i for i in bcc)
 
-        self._msg['To'] = receiver
+        self._msg['To'] = formataddr(pair=(receiver_name, receiver))
         self._msg['CC'] = cc
         self._msg['BCC'] = bcc
         self._msg['Reply-To'] = no_reply
@@ -86,9 +89,11 @@ class Send(Login):
 
     # Send Method
     def send(self,
-             receiver,
-             cc=None,
-             bcc=None,
+             receiver: str,
+             receiver_name: str = '',
+             sender_name: str = '',
+             cc: str = None,
+             bcc: str = None,
              no_reply: str = None,
              subject: str = None,
              message: str = None,
@@ -96,6 +101,8 @@ class Send(Login):
              audio: str = None,
              file: str = None) -> None:
         """
+        :param receiver_name: Set recipient name
+        :param sender_name: Set sender name
         :param no_reply: Set no-reply email
         :param cc: Email Address as String or List. (Carbon Copy)
         :param bcc: Email Address as String or List. (Blind Carbon Copy)
@@ -111,8 +118,10 @@ class Send(Login):
         send_info: List = []
         multi_info: Dict = {}
 
-        self.__prepare_message(receiver=receiver, cc=cc,
-                               bcc=bcc, subject=subject,
+        self.__prepare_message(receiver=receiver,
+                               receiver_name=receiver_name,
+                               sender_name=sender_name,
+                               cc=cc, bcc=bcc, subject=subject,
                                message=message, no_reply=no_reply)
 
         self.__prepare_attachments(image=image,

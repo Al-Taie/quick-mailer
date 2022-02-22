@@ -40,9 +40,11 @@ mail.send(receiver='someone@example.com',  # Email From Any service Provider
 
 **Parameters**
 ```py
-receiver: Email Address as String or List.                [Recuired]
+receiver: Email Address as String or List.                [Required]
 cc: Email Address as String or List.  (Carbon Copy)       [Optional]
 bcc: Email Address as String or List. (Blind Carbon Copy) [Optional]
+sender_name: Set Sender name.                             [Optional]
+receiver_name: Set receiver name.                         [Optional]
 no_reply: Set Another Email To Reply                      [Optional]
 subject: Message Title.                                   [Optional]
 message: Your Message.                                    [Optional]
@@ -133,6 +135,11 @@ mail.about()
 ```
 
 #### Changelogs
+
+> > 2022.2.22 update:
+> - Add (sender name & receiver name) feature.
+
+<br>
 
 > > 2022.2.10 update:
 > - Fix issue #3 TypeError on python < 3.10

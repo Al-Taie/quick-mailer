@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: quick-mailer
-Version: 2022.2.10
+Version: 2022.2.22
 Summary: This Module help you to send fast Email.🌸
 Home-page: https://github.com/Al-Taie/quick-mailer
 Author: Ahmed Al-Taie
@@ -35,7 +35,7 @@ pip install quick-mailer
 ```
 
 [//]: # (**[-->> pypi Link]&#40;https://pypi.org/project/quick-mailer&#41;**)
-
+[//]: # ()
 **[-->> GitHub Link](https://github.com/Al-Taie/quick-mailer)**
 
 # Usage:
@@ -56,9 +56,11 @@ mail.send(receiver='someone@example.com',  # Email From Any service Provider
 
 **Parameters**
 ```py
-receiver: Email Address as String or List.                [Recuired]
+receiver: Email Address as String or List.                [Required]
 cc: Email Address as String or List.  (Carbon Copy)       [Optional]
 bcc: Email Address as String or List. (Blind Carbon Copy) [Optional]
+sender_name: Set Sender name.                             [Optional]
+receiver_name: Set receiver name.                         [Optional]
 no_reply: Set Another Email To Reply                      [Optional]
 subject: Message Title.                                   [Optional]
 message: Your Message.                                    [Optional]
@@ -149,6 +151,7 @@ mail.about()
 ```
 
 #### Changelogs
+
 > > 2022.2.10 update:
 > - Fix issue #3 TypeError on python < 3.10
 
