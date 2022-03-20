@@ -1,5 +1,7 @@
 ![image](https://raw.githubusercontent.com/Al-Taie/quick-mailer/master/images/bsmala.png)
 
+![GitHub last commit](https://img.shields.io/github/last-commit/Al-Taie/quick-mailer)
+![Lines of code](https://img.shields.io/tokei/lines/github/Al-Taie/quick-mailer?color=red&style=flat)
 [![Downloads](https://pepy.tech/badge/quick-mailer)](https://pepy.tech/project/quick-mailer)
 [![Downloads](https://pepy.tech/badge/quick-mailer/month)](https://pepy.tech/project/quick-mailer/month)
 [![Downloads](https://pepy.tech/badge/quick-mailer/week)](https://pepy.tech/project/quick-mailer/week)
