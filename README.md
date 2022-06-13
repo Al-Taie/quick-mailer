@@ -6,6 +6,8 @@
 [![Downloads](https://pepy.tech/badge/quick-mailer/month)](https://pepy.tech/project/quick-mailer/month)
 [![Downloads](https://pepy.tech/badge/quick-mailer/week)](https://pepy.tech/project/quick-mailer/week)
 <a href="https://www.instagram.com/9_Tay"><img src="https://img.shields.io/badge/instagram-%23E4415F?style=flat&logo=instagram&logoColor=white"/></a>
+[![Rate this package](https://badges.openbase.com/python/rating/quick-mailer.svg?token=dOXQlHZtUTrsmrkIt5r6f6j37pA19DqmuXrXasI5+e8=)](https://openbase.com/python/quick-mailer?utm_source=embedded&amp;utm_medium=badge&amp;utm_campaign=rate-badge)
+[![Verified on Openbase](https://badges.openbase.com/python/verified/quick-mailer.svg?token=dOXQlHZtUTrsmrkIt5r6f6j37pA19DqmuXrXasI5+e8=)](https://openbase.com/python/quick-mailer?utm_source=embedded&amp;utm_medium=badge&amp;utm_campaign=rate-badge)
 
 # Description
 This Module help you to send **fast Email. 🌸**
