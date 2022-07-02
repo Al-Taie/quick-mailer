@@ -6,11 +6,16 @@
 <a href="https://www.instagram.com/9_Tay"><img src="https://img.shields.io/badge/instagram-%23E4415F?style=flat&logo=instagram&logoColor=white"/></a>
 
 # Description
+
 This Module help you to send **fast Email. 🌸**
 
 And you can attach **image, audio, and other files easily.**
 
 The Module support **Gmail And Microsoft** right now, but in the nearly future will support other mail services.
+
+# Auth
+
+see this: [How to login after disable less secure apps?](GoogleAuth.md)
 
 # Installation:
 
