@@ -1,5 +1,6 @@
 ![image](https://raw.githubusercontent.com/Al-Taie/quick-mailer/master/images/bsmala.png)
 
+<a href="#"><img src="https://img.shields.io/static/v1?label=%F0%9F%8C%9F&message=If%20Useful&style=style=flat&color=E4415F" alt="Star Badge"/></a>
 ![GitHub last commit](https://img.shields.io/github/last-commit/Al-Taie/quick-mailer)
 ![Lines of code](https://img.shields.io/tokei/lines/github/Al-Taie/quick-mailer?color=red&style=flat)
 [![Downloads](https://pepy.tech/badge/quick-mailer)](https://pepy.tech/project/quick-mailer)
